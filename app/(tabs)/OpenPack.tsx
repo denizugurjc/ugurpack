@@ -4,6 +4,7 @@ import { subscribeToShake } from "@/lib/shakeDetector";
 import React, { useEffect, useState } from "react";
 import { ActivityIndicator, Image, StyleSheet, Text, View } from "react-native";
 import { PanGestureHandler, State } from "react-native-gesture-handler";
+import { getCardStyle, getRarityTextColor } from "./Inventory";
 
 export default function OpenPackScreen() {
   const { addCard } = useInventory();
@@ -44,7 +45,22 @@ export default function OpenPackScreen() {
         </Text>
         {loading && <ActivityIndicator size="large" color="#fff" />}
         {currentCard && (
-          <View style={styles.card}>
+          <View
+            style={[
+              styles.card,
+              getCardStyle(currentCard.rarity),
+              { borderWidth: 2 },
+            ]}
+          >
+            <Text
+              style={[
+                styles.rarity,
+                { color: getRarityTextColor(currentCard.rarity) },
+              ]}
+            >
+              {currentCard.rarity}
+            </Text>
+
             <Image source={currentCard.image} style={styles.image} />
             <Text style={styles.name}>{currentCard.name}</Text>
             <Text style={styles.description}>{currentCard.description}</Text>
@@ -111,7 +127,10 @@ const styles = StyleSheet.create({
     fontWeight: "bold",
   },
   rarity: {
+    marginTop: 4,
     fontSize: 14,
-    color: "#aaa",
+    fontWeight: "bold",
+    textTransform: "uppercase",
+    letterSpacing: 1,
   },
 });
