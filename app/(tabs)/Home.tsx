@@ -1,10 +1,15 @@
 import { OpenPackButton } from "@/components/ui/OpenPackButton";
-import { useNavigation } from "@react-navigation/native";
+import { NavigationProp, useNavigation } from "@react-navigation/native";
 import React from "react";
 import { StyleSheet, Text, TouchableOpacity, View } from "react-native";
 
+// Define your stack param list
+type RootStackParamList = {
+  Inventory: undefined;
+};
+
 export default function StartScreen() {
-  const navigation = useNavigation();
+  const navigation = useNavigation<NavigationProp<RootStackParamList>>();
 
   return (
     <View style={styles.container}>
