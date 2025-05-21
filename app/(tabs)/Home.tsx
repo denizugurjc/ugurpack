@@ -8,7 +8,7 @@ export default function StartScreen() {
 
   return (
     <View style={styles.container}>
-      <Text style={styles.title}>Welcome to Ugurpack</Text>
+      <Text style={styles.title}>Welcome to UgurPack</Text>
       <OpenPackButton />
 
       <TouchableOpacity
