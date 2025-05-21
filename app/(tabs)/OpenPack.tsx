@@ -82,7 +82,7 @@ export default function OpenPackScreen() {
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    backgroundColor: "#121212",
+    backgroundColor: "#1e1e2f",
     alignItems: "center",
     justifyContent: "center",
     padding: 20,

@@ -15,7 +15,7 @@ export default function StartScreen() {
         style={styles.button}
         onPress={() => navigation.navigate("Inventory")}
       >
-        <Text style={styles.buttonText}>Inventar anzeigen</Text>
+        <Text style={styles.buttonText}>Show inventory</Text>
       </TouchableOpacity>
     </View>
   );

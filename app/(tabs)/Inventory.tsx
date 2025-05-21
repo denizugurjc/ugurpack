@@ -71,7 +71,7 @@ export const getRarityTextColor = (rarity: string) => {
     case "legendary":
       return "#f1c40f";
     case "mythic":
-      return "#ff00ff";
+      return "#ff4d4d";
     default:
       return "#ccc";
   }
@@ -97,9 +97,7 @@ export default function InventoryScreen() {
     return (
       <View style={styles.center}>
         <Text style={styles.emptyText}>You have no cards yet 😢</Text>
-        <Text style={styles.emptyText}>
-          Open a pack to get you first cards!
-        </Text>
+        <Text style={styles.emptyText}>Open a pack to get you first card!</Text>
         <OpenPackButton />
       </View>
     );
@@ -115,11 +113,11 @@ export default function InventoryScreen() {
         renderItem={({ item }) => {
           const style = getCardStyle(item.rarity);
           return (
-            <View style={[styles.card, style, styles.shadow]}>
-              <Pressable
-                onPress={() => openModal(item)}
-                style={[styles.card, getCardStyle(item.rarity), styles.shadow]}
-              >
+            <Pressable
+              onPress={() => openModal(item)}
+              style={[styles.card, styles.shadow, getCardStyle(item.rarity)]}
+            >
+              <View style={[styles.cardInventory, style]}>
                 <Image source={item.image} style={styles.image} />
                 <Text style={styles.name}>
                   {item.name}{" "}
@@ -133,8 +131,8 @@ export default function InventoryScreen() {
                 >
                   {item.rarity}
                 </Text>
-              </Pressable>
-            </View>
+              </View>
+            </Pressable>
           );
         }}
       />
@@ -183,6 +181,7 @@ const styles = StyleSheet.create({
     flex: 1,
     justifyContent: "center",
     alignItems: "center",
+    backgroundColor: "#1e1e2f",
   },
   modalOverlay: {
     flex: 1,
@@ -223,7 +222,7 @@ const styles = StyleSheet.create({
 
   emptyText: {
     fontSize: 18,
-    color: "#888",
+    color: "#ffffff",
   },
   list: {
     padding: 10,
@@ -240,7 +239,12 @@ const styles = StyleSheet.create({
     shadowRadius: 10,
     elevation: 10,
   },
-
+  cardInventory: {
+    flex: 1,
+    margin: 10,
+    padding: 10,
+    alignItems: "center",
+  },
   image: {
     width: 100,
     height: 140,
